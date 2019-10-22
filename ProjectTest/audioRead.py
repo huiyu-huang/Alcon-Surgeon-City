@@ -12,6 +12,9 @@ import moviepy.editor as mp
 
 
 def audio_read(video):
+    f = open('test.txt','w+')
+    f.close()
+    
     #this takes the first minute of the shia.mp4 video and converts it into test.mp3
     clip = mp.VideoFileClip(video)#.subclip(0,-1)
 
@@ -79,7 +82,10 @@ def audio_read(video):
 
         #then it runs the google_recognizer
         try:
-            print (r.recognize_google(audio))
+            f = open('test.txt','a+')
+            print(r.recognize_google(audio))
+            f.write(r.recognize_google(audio) +"\n")
+            f.close()
         except:
             pass
         num2 += 1
