@@ -60,22 +60,29 @@ def audio_read(video):
             clip2.audio.write_audiofile("test" + str(num)+ ".mp3" )
             s = 0
 
-    #TODO read all these videos, lol
-
+    #TODO read all these videos, lol, is done
+    num2 = 0
     #this changes the mp3 to wav file
-    r = sr.Recognizer()
-    src = "test5.mp3"
-    dst = "test.wav"
-    sound = AudioSegment.from_mp3(src)
-    sound.export(dst,format="wav")
+    for x in range((num+1)):
 
-    #the wav file gets recorded
-    harvard = sr.AudioFile('test.wav')
-    with harvard as source:
-        audio = r.record(source)
 
-    #then it runs the google_recognizer
-    print (r.recognize_google(audio))
+        r = sr.Recognizer()
+        src = "test" + str(num2) +".mp3"
+        dst = "test" + str(num2) + ".wav"
+        sound = AudioSegment.from_mp3(src)
+        sound.export(dst,format="wav")
+
+        #the wav file gets recorded
+        harvard = sr.AudioFile('test' + str(num2) +'.wav')
+        with harvard as source:
+            audio = r.record(source)
+
+        #then it runs the google_recognizer
+        try:
+            print (r.recognize_google(audio))
+        except:
+            pass
+        num2 += 1
 
 #vid = input("What video would you like to transcribe?")
 audio_read("shia.mp4")
