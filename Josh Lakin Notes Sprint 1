@@ -1,1 +1,32 @@
+This sprint we mostly focused on discussion, especially this past week. We were
+on the fence between two project ideas, and it was difficult to come up with a project
+that is both presentable and has clear steps to be taken. We ended up going
+with the video analysis idea, where we were going to identify each separate event that
+occurs in a video, the length of the event, and a summary of what occurred in the event.
 
+My initials thoughts about how to go about this (may or may not make sense):
+
+An event would be basically a video clip, and a video would be partitioned into video
+clips/events. The video would be partitioned such that the content that occurs in one
+segment is uncorrelated/unrelated to all other clips. An example of this would be scenes
+in a movie that take place in different settings, where the events that take place typically
+are unrelated to what goes on in other scenes. If a movie starts showing a continuous scene
+then jump cuts to a completely different location, that would be a good place to segment a video.
+
+Since our goal is to apply video content analysis to surgical footage, the footage will most likely
+be continuous and contain no jump cuts. The way I thought about dividing the footage in that case 
+would be to find places in the video that show some sudden change, which could be something like
+picking up a tool, or people speaking up after a long silence. We could define some kind of acceleration
+to separate mostly constant scenes from rapid changes in the footage.
+
+This approach "could" solve (it's just mostly wild speculation) the issue of dividing a video
+into events/video clips, but then there is the issue of figuring out how to classify/label each event. We
+would probably have to take under consideration what happened in previous events as well as the current event
+in order to come up with a label.
+
+To describe an event, we would have to be able to recognize objects like surgical tools or people and track the trajectory
+of the objects. I'm not sure how complex our summaries will be, as it could be as simple as a one word label or a couple sentences.
+This will probably be the most difficult task.
+
+The end goal of the project, however, would be to time surgeons and compare it to how long each step of the procedure should
+actually take. A more difficult goal would be comparing description of the footage to a description of the actual procedure.
