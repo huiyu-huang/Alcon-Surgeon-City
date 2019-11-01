@@ -84,4 +84,5 @@ This week I also looked into last years PRDs to get a better idea of what is exp
 This is some of the code that we can use towards the web app on the front end
 We can use bootstrap
 I will continue to work on the frontend to have a basic web app running by the
-end of sprint 2
+end of sprint 2. The code turns the headers into how they will be displayed rather
+than text. 
