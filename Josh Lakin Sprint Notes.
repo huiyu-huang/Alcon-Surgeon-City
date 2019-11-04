@@ -30,3 +30,19 @@ This will probably be the most difficult task.
 
 The end goal of the project, however, would be to time surgeons and compare it to how long each step of the procedure should
 actually take. A more difficult goal would be comparing description of the footage to a description of the actual procedure.
+
+—
+
+Sprint 2:
+
+The first step I’m going to take is to start analyzing our videos with OpenCV and apply some of the algorithms they provide.
+What I want to implement in OpenCV is object detection (just using edge detection algorithms) to partition a frame into objects,
+then I will use optical flow to keep track of the objects that are moving the most. This way we can focus on the parts of the image
+we want to analyze with a neural network, and ignore the rest of the image. This way we can use specific parts of the image rather
+than analyzing the whole image with the neural network. When we identify what object is in one frame, we don’t have to input any other
+frame containing that object as long as that object stays on screen, because we can just track its movement between frames. For now though
+I’m just going to focus on object detection. I thought of some ways of finding objects without using a machine learning model first, which I want
+to try out to see how it works. My idea was to apply some kind of edge filter to leave only the high frequency parts of the image, then
+use one of the corner detection functions that OpenCV provides. Using the corners I will try to construct bounding boxes. If the results are weird
+then I will just try using a CNN for detecting objects. I think providing some kind of filtered/processed version of frame to a CNN might give better
+results than just feeding the raw frame.
