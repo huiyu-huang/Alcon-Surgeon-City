@@ -7,16 +7,21 @@ from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 path = 'C:\\Users\\Chris\\Documents\\GitHub\\Alcon-Surgeon-City\\ProjectTest\\frames\\surgery1'
 
 #whatever video you want
-clip = VideoFileClip('surgery1right.avi').subclip(307,335)#this is the important bit
+clip1 = VideoFileClip('surgery1right.avi').subclip(307,336)#this is the important bit
+##clip2 = VideoFileClip('surgery1right.avi').subclip(31,50)
+##clip3 = VideoFileClip('surgery1right.avi').subclip(111,130)
+##clip4 = VideoFileClip('surgery1right.avi').subclip(131,155)
+##clip = concatenate_videoclips([clip1,clip2,clip3, clip4])
 
 
-clip.write_videofile('surgery1.mp4')
-video = cv2.VideoCapture('surgery1.mp4')
+clip1.write_videofile('surgery1clip.mp4')
+video = cv2.VideoCapture('surgery1clip.mp4')
 success,image = video.read()
 count = 0
 success = True
 while success:
-    cv2.imwrite(os.path.join(path, 'frameL%d.jpg'% count),image)
+    cv2.imwrite(os.path.join(path, 'frameD2_%d.jpg'% count),image)
     success,image = video.read()
-    print ('Read a new frame: ', success)
+    #print ('Read a new frame: ', success)
     count += 10
+print("Done!!!")
