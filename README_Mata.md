@@ -1,3 +1,15 @@
+11/7/19
+I attempted to add the submodule of where I worked on the heroku web app. however
+when I attempted to go into the directory, it gave a 404 not found error. I am going to
+leave it there for now as a place placeholder, while I get our own web app running.
+The link to the original code from Heroku can be found at the following link:
+https://github.com/heroku/node-js-getting-started.git
+I spent several hours going through the tutorial and attempting to modify the code,
+but was not able to get it to show in this repository. The fact that the code is not
+part of the project is not important, since I am going to replace that code. When i get our web app running, I will just delete that directory since it does not have anything,
+along with the .gitmodules directory.
+------------------------------------------------------------------------------- 
+
 10/25/19
 
 This week we worked to redefine our project idea. One of the things that we decided that we were going to need a web app for our project is that. I have previously worked on a web app, however I only worked on the backend of the project.
@@ -63,7 +75,7 @@ This is some of the code that we can use towards the web app on the front end
 We can use bootstrap
 I will continue to work on the frontend to have a basic web app running by the
 end of sprint 2. The code turns the headers into how they will be displayed rather
-than text. 
+than text.
 -----------------------------------------------------------------------------------
 10/18/19
 import numpy as np import cv2
