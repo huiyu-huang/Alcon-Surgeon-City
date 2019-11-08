@@ -6,9 +6,15 @@
 ##                print (part)
 
 file = open('test.txt', 'r')
-string = ("do")
+string = ["do","you"]
 lineCount = 0
-for line in file:
-    lineCount += 1
-    if string in line.split(): # remove trailing newline
-        print("video" + str(lineCount-1))
+
+for x in string:
+    print(x + " in: ")
+    for line in file:
+        print(lineCount)
+        lineCount += 1
+        if x in line.split(): # remove trailing newline
+            print("video" + str(lineCount-1))
+    file.seek(0)
+    lineCount = 0
