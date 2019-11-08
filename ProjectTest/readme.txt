@@ -8,10 +8,10 @@ How to use on windows
 6. Edit in Path in System Variables. Add C:\ffmpeg\bin. Also make sure your ffmpeg folder is in C:
 7. Run the file and it should work by itself with the test files given.
 
-Todo: Allow user to change inputted videos
+Todo: Allow user to change inputted videos. Done.
 Todo: Allow continuous video input
-Todo: Split the video into doable chunks of data
-Todo: Make it so the other group can use the output data
+Todo: Split the video into doable chunks of data. Done.
+Todo: Make it so the other group can use the output data. Done.
 Todo: Make it easy to change later
 Todo: Check to see what it wouldn't work on
 Todo: Fix parts where so it would work
