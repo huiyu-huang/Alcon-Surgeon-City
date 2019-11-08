@@ -8,8 +8,7 @@ I spent several hours going through the tutorial and attempting to modify the co
 but was not able to get it to show in this repository. The fact that the code is not
 part of the project is not important, since I am going to replace that code. When i get our web app running, I will just delete that directory since it does not have anything,
 along with the .gitmodules directory.
-------------------------------------------------------------------------------- 
-
+-------------------------------------------------------------------------------
 10/25/19
 
 This week we worked to redefine our project idea. One of the things that we decided that we were going to need a web app for our project is that. I have previously worked on a web app, however I only worked on the backend of the project.
