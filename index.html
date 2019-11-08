@@ -1,0 +1,40 @@
+<!Doctype html>
+<html>
+<head>
+  <title>Firbase web basic</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Raleway:300,400,500,700" rel="stylesheet">
+
+  <script src="https://use.fontawesome.com/939e9dd52c.js"></script>
+  <!--Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="mainDiv" align="right">
+  <h1 id="fireHeading" align="left">Firebase Web app</h1>
+  <textarea id="mainText" placeholder="Enter whatever here:"></textarea>
+  <button id="submitBtn" onclick="submitClick()"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+</div>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBfJeaQjeU2q_g1zaC_rvJ2D2jEDq58umI",
+    authDomain: "eyelight-vids.firebaseapp.com",
+    databaseURL: "https://eyelight-vids.firebaseio.com",
+    projectId: "eyelight-vids",
+    storageBucket: "eyelight-vids.appspot.com",
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="index.js"></script>
+
+  </body>
+</html>
