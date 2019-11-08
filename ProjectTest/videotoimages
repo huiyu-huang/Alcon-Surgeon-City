@@ -1,0 +1,14 @@
+import cv2
+import os
+
+path = 'C:\\Users\\Chris\\Desktop\\Downloads\\ProjectTest\\frames'
+
+video = cv2.VideoCapture('shia.mp4')
+success,image = video.read()
+count = 0
+success = True
+while success:
+    cv2.imwrite(os.path.join(path, 'frame%d.jpg'% count),image)
+    success,image = video.read()
+    print ('Read a new frame: ', success)
+    count += 1

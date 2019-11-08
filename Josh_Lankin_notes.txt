@@ -1,0 +1,54 @@
+Here are some notes I put together on potential technologies to use. I looked at
+Python natural language processing packages and learned about some of the algorithms OpenCV
+uses to track motion in a video.
+
+Python code snippet for natural language processing:
+
+--
+
+import speech_recognition as sr
+r = sr.Recognizer()
+harvard = sr.AudioFile('harvard.wav')
+with harvard as source:
+	audio = r.record(source)
+print(r.recognize_google(audio))
+#print(r.recognize_bing(audio,key=BING_KEY))
+#print(r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS))
+#print(r.recognize_houndify(audio,client_id=HOUNDIFY_CLIENT_ID, client_key=HOUNDIFY_CLIENT_KEY))
+#print(r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD))
+#print(r.recognize_sphinx(audio))
+#print(r.recognize_wit(audio,key=WIT_AI_KEY))
+
+#google is the only one so far that has built in library, the other tools
+#require some sort of authentication
+
+jackhammer = sr.AudioFile('harvard.wav')
+with jackhammer as source:
+    r.adjust_for_ambient_noise(source) #can filter out background noise
+    audio = r.record(source)
+r.recognize_google(audio)
+
+--
+
+The output is: "the stale smell of old beer lingers it takes heat to bring out the odor a cold dip restores health and zest a salt pickle taste fine with ham tacos al Pastore are my favorite a zestful food is be hot cross bun." It resembles what was said in the original audio file,
+but the main issue is that the words are jumbled together, which means it's difficult to transcribe the grammar of a sentence.
+It might be a possibility that it would analyze speech better if it analyzed shorter time intervals, and we could probably train
+a machine learning model to extract the grammar from speech. It would be more feasible to use existing speech-to-text tools (rather than
+coming up with one from scratch) then just process the output from the tools to get a better result.
+
+The code was gathered from a website showcasing a python package that
+acts as a wrapper for a bunch of different speech-to-text tools from various companies. Some of them
+you need to input some kinda authentication as an argument in the function to use the company's tool,
+but I think it would be useful to compare the outputs between different tools for a given input to see what
+we want to use.
+
+
+OpenCV algorithms to use:
+Shi-Tomasi Corner Detector:
+Finds the N strongest corners in a grayscale image using Shi-Tomasi method. This can be used to create boxes around some
+features in images.
+
+Then to detect motion, use Lucas-Kanade optical flow to track the motion identified points.
+The assumption is that moving objects gives information about the sequence of events in the video,
+which we can use to generate a desccription of what happened in a video. First find the points you want to use
+with the corner detector, then track those points you found with optical flow.

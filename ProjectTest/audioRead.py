@@ -18,7 +18,7 @@ def audio_read(video):
     #this takes the first minute of the shia.mp4 video and converts it into test.mp3
     clip = mp.VideoFileClip(video)#.subclip(0,-1)
 
-
+    #variables for the math section
     s = math.floor(clip.duration)
     sec = math.floor(clip.duration)
     num = 0
@@ -44,51 +44,61 @@ def audio_read(video):
 ##        s -= 10
     
     ##finish up splicing video, is done
-    while s != 0:
-        clip2 = mp.VideoFileClip(video).subclip(num2, s2)
-        clip2.audio.write_audiofile("test" + str(num)+ ".mp3" )
-        num += 1
-        if s > 20:
-            num2 = s2
-            s-=10
-            s2 += 10
-            print(num2)
-            print(s2)
-            print(s)
-        else:
-            num2 = s2
-            s2 += (s-10)
-            print(s2)
+    try:
+        while s != 0:
             clip2 = mp.VideoFileClip(video).subclip(num2, s2)
             clip2.audio.write_audiofile("test" + str(num)+ ".mp3" )
-            s = 0
+            num += 1
+            if s > 20:
+                num2 = s2
+                s-=10
+                s2 += 10
+                print(num2)
+                print(s2)
+                print(s)
+            else:
+                num2 = s2
+                s2 += (s-10)
+                print(s2)
+                clip2 = mp.VideoFileClip(video).subclip(num2, s2)
+                clip2.audio.write_audiofile("test" + str(num)+ ".mp3" )
+                s = 0
+    except:
+        print("Something is wrong with the math for the video")
 
-    #TODO read all these videos, lol, is done
+    #Got the second num2 for blank video
     num2 = 0
     #this changes the mp3 to wav file
-    for x in range((num+1)):
+    try:
+        for x in range((num+1)):
 
 
-        r = sr.Recognizer()
-        src = "test" + str(num2) +".mp3"
-        dst = "test" + str(num2) + ".wav"
-        sound = AudioSegment.from_mp3(src)
-        sound.export(dst,format="wav")
+            r = sr.Recognizer()
+            src = "test" + str(num2) +".mp3"
+            dst = "test" + str(num2) + ".wav"
+            sound = AudioSegment.from_mp3(src)
+            sound.export(dst,format="wav")
 
-        #the wav file gets recorded
-        harvard = sr.AudioFile('test' + str(num2) +'.wav')
-        with harvard as source:
-            audio = r.record(source)
+            #the wav file gets recorded
+            harvard = sr.AudioFile('test' + str(num2) +'.wav')
+            with harvard as source:
+                audio = r.record(source)
 
-        #then it runs the google_recognizer
-        try:
-            f = open('test.txt','a+')
-            print(r.recognize_google(audio))
-            f.write(r.recognize_google(audio) +"\n")
-            f.close()
-        except:
-            pass
-        num2 += 1
+            #then it runs the google_recognizer
+            try:
+                f = open('test.txt','a+')
+                print(r.recognize_google(audio))
+                f.write(r.recognize_google(audio) +"\n")
+                f.close()
+            except:
+                pass
+            num2 += 1
+    except:
+        print("Something wrong with the video recording")
 
-#vid = input("What video would you like to transcribe?")
-audio_read("shia.mp4")
+#vid = input("What video would you like to transcribe? Remember, filename.mp4")
+
+try:
+    audio_read("shia.mp4")
+except:
+    print ("Exception: video not found")
