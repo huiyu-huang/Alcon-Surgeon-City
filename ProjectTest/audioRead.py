@@ -47,7 +47,7 @@ def audio_read(video):
     try:
         while s != 0:
             clip2 = mp.VideoFileClip(video).subclip(num2, s2)
-            clip2.audio.write_audiofile("test" + str(num)+ ".mp3" )
+            clip2.audio.write_audiofile("test" + str(num)+ ".wav" )
             num += 1
             if s > 20:
                 num2 = s2
@@ -61,7 +61,7 @@ def audio_read(video):
                 s2 += (s-10)
                 print(s2)
                 clip2 = mp.VideoFileClip(video).subclip(num2, s2)
-                clip2.audio.write_audiofile("test" + str(num)+ ".mp3" )
+                clip2.audio.write_audiofile("test" + str(num)+ ".wav" )
                 s = 0
     except:
         print("Something is wrong with the math for the video")
@@ -74,10 +74,10 @@ def audio_read(video):
 
 
             r = sr.Recognizer()
-            src = "test" + str(num2) +".mp3"
-            dst = "test" + str(num2) + ".wav"
-            sound = AudioSegment.from_mp3(src)
-            sound.export(dst,format="wav")
+##            src = "test" + str(num2) +".wav"
+##            dst = "test" + str(num2) + ".wav"
+##            sound = AudioSegment.from_mp3(src)
+##            sound.export(dst,format="wav")
 
             #the wav file gets recorded
             harvard = sr.AudioFile('test' + str(num2) +'.wav')
