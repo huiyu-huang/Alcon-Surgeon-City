@@ -7,10 +7,8 @@ firebase_admin.initialize_app(cred, {
 })
 db = firestore.client()
 bucket = storage.bucket()
-blob = bucket.blob('shia.mp4') #what the file name will be called on firebase
+blob = bucket.blob('TEST2.txt') #what the file name will be called on firebase
+outfile='TEST.txt' #what file you want to upload to firebase
 
-#outfile='TEST.txt' #what file you want to upload to firebase
-
-#how to download files
-with open("harvard.mp4", "wb") as file_obj:
-    blob.download_to_file(file_obj)
+#how to upload file
+blob.upload_from_filename(outfile)
