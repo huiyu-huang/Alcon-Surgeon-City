@@ -3,12 +3,6 @@ import cv2
 
 config = {
    # confidential
-   "apiKey": "AIzaSyBfJeaQjeU2q_g1zaC_rvJ2D2jEDq58umI",
-   "authDomain": "eyelight-vids.firebaseapp.com",
-   "databaseURL": "https://eyelight-vids.firebaseio.com",
-   "projectId": "eyelight-vids",
-   "storageBucket": "eyelight-vids.appspot.com",
-   "messagingSenderId": "359657414936",
 }
 
 firebase = pyrebase.initialize_app(config)
