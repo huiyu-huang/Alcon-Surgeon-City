@@ -1,0 +1,9 @@
+SELECT C.cid, cname
+FROM Customers C, Orders O
+WHERE C.cid = C.cid
+GROUP BY C.cid
+HAVING AVG(dollars) <=ALL(
+SELECT AVG(dollars)
+FROM Orders
+GROUP BY C.cid
+);
