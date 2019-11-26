@@ -1,9 +1,6 @@
-SELECT C.cid, cname
-FROM Customers C, Orders O
-WHERE C.cid = C.cid
-GROUP BY C.cid
-HAVING AVG(dollars) <=ALL(
-SELECT AVG(dollars)
-FROM Orders
-GROUP BY C.cid
-);
+just do it don't let your dreams
+dreams yesterday you said tomorrow so just do it make your dreams come true
+some people dream of success while you're going to wake up and work hard at it nothing is impossible
+you should get to the point where anyone else would quit and you're not going to stop there know what are you waiting for
+yes you can just do it
+if you're tired of starting over stop giving up

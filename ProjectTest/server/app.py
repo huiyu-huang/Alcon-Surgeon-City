@@ -2,6 +2,7 @@ from database import *
 import os
 import sys
 from database import upload
+from audioRead import audio_read
 # app.py
 from flask import Flask, request, render_template, url_for, redirect          # import flask
 app = Flask(__name__,static_folder='static')             # create an app instance
@@ -20,11 +21,13 @@ def hello_name(name):              # call method hello_name
 def handleFileUpload():
     if 'photo' in request.files:
         vid = request.files['photo']
-        if vid.filename != '':            
-            vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server', vid.filename))
-            vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename))
-            vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/templates', vid.filename))
+        if vid.filename != '':
+            audio_read(vid.filename)
             upload(vid.filename)
+            #vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server', vid.filename))
+            vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename))
+            #vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/templates', vid.filename))
+            #upload(vid.filename)
     return render_template('video.html') #redirect('/') #return report
 
 

@@ -9,6 +9,7 @@ def upload(video):
             'storageBucket': 'meprojec.appspot.com'
         })
         count += 1
+    
     db = firestore.client()
     bucket = storage.bucket()
     blob = bucket.blob(video) #what the file name will be called on firebase
