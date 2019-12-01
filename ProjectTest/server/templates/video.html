@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Example</title>
+</head>
+<body>
+  <h2>Serving video files from Flask template</h2>
+  <video width="320" height="240" controls>
+    <source src={{ url_for('static', filename="shia2.mp4") }} type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <form action="/result" method="post">
+    <button type="submit">Click me to see text</button>
+ </form>
+</body>
+</html>

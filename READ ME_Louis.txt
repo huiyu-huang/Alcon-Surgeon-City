@@ -1,5 +1,0 @@
-Really don't have much codes done, 
-was testing out Tensor Flow 2.0 and how it can be used to build a ML model 
-that recoingized whether a given word should appear in the final report or not.
-
-Louis 10/18.
