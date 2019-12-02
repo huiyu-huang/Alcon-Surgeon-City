@@ -3,7 +3,10 @@ import os
 import sys
 from database import upload
 from audioRead import audio_read
+from joshfile import uploadvideo
+
 import moviepy.editor as mp
+import numpy as np
 # app.py
 
 from flask import Flask, request, render_template, url_for, redirect          # import flask
@@ -26,10 +29,11 @@ def handleFileUpload():
         
         if vid.filename != '':
             
-            vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename))
+            #vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename))
             #clip = mp.VideoFileClip(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename)).subclip(0,30)
-            audio_read(vid.filename)
-            upload(vid.filename)
+            uploadvideo(vid.filename)
+            #audio_read("static/surgeryoutput.mp4")
+            upload("static/surgeryoutput.mp4")
             upload("test.txt")
             
             

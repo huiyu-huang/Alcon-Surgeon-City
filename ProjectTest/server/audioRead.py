@@ -11,12 +11,12 @@ from pydub import AudioSegment
 import moviepy.editor as mp
 
 
-def audio_read(video):
+def audio_read(video): #do video
     f = open('test.txt','w+')
     f.close()
     
     #this takes the first minute of the shia.mp4 video and converts it into test.mp3
-    clip = mp.VideoFileClip(video)#.subclip(0,-1)
+    clip = mp.VideoFileClip(video).subclip(0,30)
 
     #variables for the math section
     s = math.floor(clip.duration)
