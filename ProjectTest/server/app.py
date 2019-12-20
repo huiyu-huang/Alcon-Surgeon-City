@@ -12,7 +12,14 @@ import numpy as np
 from flask import Flask, request, render_template, url_for, redirect          # import flask
 app = Flask(__name__,static_folder='static')             # create an app instance
 
-
+@app.route('/results', methods = ['GET', 'POST'])
+def result():
+    if request.method == 'GET':
+        place = request.args.get('place', None)
+        if place:
+            return place
+        return "No place information is given"
+    
 @app.route("/")                   # at the end point /
 def start():                      # call method hello
     #return "Hello World!"         # which returns "hello world"
@@ -31,7 +38,7 @@ def handleFileUpload():
             
             #vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename))
             #clip = mp.VideoFileClip(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename)).subclip(0,30)
-            uploadvideo(vid.filename)
+            #uploadvideo(vid.filename)
             #audio_read("static/surgeryoutput.mp4")
             upload("static/surgeryoutput.mp4")
             upload("test.txt")
@@ -46,5 +53,5 @@ def handleFileUpload():
 
 if __name__ == "__main__":        # on running python app.py
     #upload()
-    app.run(host='127.0.0.1',debug=True)                     # run the flask app
+    app.run(host='0.0.0.0', debug = True)                     # run the flask app, don't use debug mode
 
