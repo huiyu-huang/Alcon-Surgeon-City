@@ -23,7 +23,8 @@ def result():
 @app.route("/")                   # at the end point /
 def start():                      # call method hello
     #return "Hello World!"         # which returns "hello world"
-    return render_template('fireform.html')
+    url = url_for('static', filename='app.js')
+    return render_template('index.html', bundle = url)
 
 @app.route("/result", methods=['POST'])              # at the end point /<name>
 def hello_name():              # call method hello_name

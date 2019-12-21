@@ -27,7 +27,7 @@ const App = () => {
   } = useFileHandlers()
 
   
-class Form1 extends React.Component{
+class Form1 extends Component{
     render(){
         return (
             <div class="form">
