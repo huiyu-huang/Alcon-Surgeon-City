@@ -89,6 +89,8 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
     <script type="text/jsx">
 
+    
+
       /*** @jsx React.DOM */
 
     
@@ -109,9 +111,9 @@
             return (
                 <div class="form">
     
-                    <form action="http://localhost:5000/handleUpload" method="post" enctype="multipart/form-data" id="root">
+                    <form action="handleUpload" method="post" enctype="multipart/form-data" id="root">
                       <input type="file" name="photo" class="button"/>{"\n"}
-                      <input type="submit" value="Upload" class="button"/>
+                        <input type="submit" value="Upload" class="button"/>
                     </form>
                 </div>
             );
@@ -131,5 +133,10 @@
     );
 
     </script>
+
+    <form action="/handleUpload" method="post" enctype="multipart/form-data" id="root">
+      <input type="file" name="photo" class="button"/><BR>
+          <input type="submit" value="Upload" class="button"/>
+    </form> 
   </body>
 </html>

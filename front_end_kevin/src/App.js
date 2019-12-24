@@ -1,7 +1,5 @@
-import React, {Component} from 'react'
+import React from 'react'
 import useFileHandlers from './useFileHandlers'
-import ReactDOM from 'react-dom';
-
 import './App.css'
 
 const Input = (props) => (
@@ -25,27 +23,6 @@ const App = () => {
     onSubmit,
     onChange,
   } = useFileHandlers()
-
-  
-class Form1 extends Component{
-    render(){
-        return (
-            <div class="form">
-
-                <form action="http://localhost:5000/handleUpload" method="post" enctype="multipart/form-data" id="root">
-                  <input type="file" name="photo" class="button"/>{"\n"}
-                  <input type="submit" value="Upload" class="button"/>
-                </form>
-            </div>
-        );
-    }
-}
-
-
-ReactDOM.render(
-    <Form1/>,
-    document.getElementById('root')
-);
 
   return (
     <div className="container">

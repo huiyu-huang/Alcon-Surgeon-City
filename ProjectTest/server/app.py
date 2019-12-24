@@ -1,7 +1,7 @@
 from database import *
 import os
 import sys
-from database import upload
+from database import upload, download
 from audioRead import audio_read
 from joshfile import uploadvideo
 
@@ -21,7 +21,8 @@ app = Flask(__name__,static_folder='static')
 ##        return "No place information is given"
     
 @app.route("/")                   
-def start():                      
+def start():
+    #print("Hello it is starting")
     url = url_for('static', filename='app.js')
     return render_template('index.html', bundle = url)
 
@@ -31,19 +32,25 @@ def hello_name():
 
 @app.route("/handleUpload", methods=['POST'])
 def handleFileUpload():
+    #print("Going to vid.filename")
+    
     if 'photo' in request.files:
+        print("starting vid")
         vid = request.files['photo']
-        
+        print(vid)
         if vid.filename != '':
-            
-            vid.save(os.path.join('os.path.join','static/' + vid.filename))
+            print(vid.filename)
+            #print("w32323e2e32d")
+            vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename))
             #clip = mp.VideoFileClip(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename)).subclip(0,30)
-            #uploadvideo(vid.filename)
+            uploadvideo(vid.filename)
             #audio_read("static/surgeryoutput.mp4")
             
             upload("static/surgeryoutput.mp4")
-            #upload("test.txt")
+
             
+            #upload("test.txt")
+            download("static/surgeryoutput.mp4")
             
             #vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server', vid.filename))
             #vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/templates', vid.filename))
