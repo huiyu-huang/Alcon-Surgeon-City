@@ -10,7 +10,8 @@ import numpy as np
 # app.py
 
 from flask import Flask, request, render_template, url_for, redirect          
-app = Flask(__name__,static_folder='static')             
+app = Flask(__name__,static_folder='static')
+
 
 ##@app.route('/results', methods = ['GET', 'POST'])
 ##def result():
@@ -19,12 +20,15 @@ app = Flask(__name__,static_folder='static')
 ##        if place:
 ##            return place
 ##        return "No place information is given"
+
+uploads_dir = os.path.join(app.root_path, 'static')
+#os.makedirs(uploads_dir)
     
 @app.route("/")                   
 def start():
     #print("Hello it is starting")
-    url = url_for('static', filename='app.js')
-    return render_template('index.html', bundle = url)
+    #url = url_for('static', filename='app.js')
+    return render_template('fireform.html')#, bundle = url)
 
 @app.route("/result", methods=['POST'])              
 def hello_name():              
@@ -41,7 +45,8 @@ def handleFileUpload():
         if vid.filename != '':
             print(vid.filename)
             #print("w32323e2e32d")
-            vid.save(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename))
+            #vid.save(vid.filename)
+            vid.save(os.path.join(uploads_dir, 'surgeryoutput.mp4'))
             #clip = mp.VideoFileClip(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename)).subclip(0,30)
             uploadvideo(vid.filename)
             #audio_read("static/surgeryoutput.mp4")
