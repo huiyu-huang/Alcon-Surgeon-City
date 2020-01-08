@@ -1,10 +1,6 @@
 import firebase_admin
 from firebase_admin import credentials, firestore, storage
-
-
 count = 0
-
-#uploads to video to firebase
 def upload(video):
     global count
     if  count == 0:
@@ -22,7 +18,6 @@ def upload(video):
     #how to upload file
     blob.upload_from_filename(outfile)
 
-#downloads the video from firebase
 def download(video):
     global count
     if  count == 0:
@@ -36,7 +31,7 @@ def download(video):
     bucket = storage.bucket()
     blob = bucket.blob('static/surgeryoutput.mp4') #what the file name will be called on firebase
 
-    #what file it will be called, will be a temporary file
+    #how to upload file
     with open("harvard.mp4", "wb") as file_obj:
         blob.download_to_file(file_obj)
 

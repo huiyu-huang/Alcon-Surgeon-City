@@ -1,5 +1,6 @@
 import moviepy.editor as mp
 
+#creates the thisisknife video
 def uploadvideo(video):
     clip = mp.VideoFileClip(video).subclip(0,10)
     txt_clip = mp.TextClip("thisisknife",fontsize=70,color='white')
