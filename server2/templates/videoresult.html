@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style> 
+        #topnav {
+          height: 100px;
+          padding: 15px;
+          margin-left: 10%;
+          padding-left: 12%;
+        }
+        #title {
+          color: DodgerBlue;
+          padding: 0px 15px 0px 10px;
+          margin-top: 0px;
+          margin-bottom: 0px;
+        }
+        .column {
+          float: left;
+        }
+        #text {
+          padding: 10px;
+        }
+        a {
+          padding: 8px;
+        }
+        #links {
+          margin: 9.75px 0px;
+          padding-left: 60px
+        }
+        #login-signup {
+          margin: 9.75px 0px;
+          padding-left: 60px
+        }
+        a:link {
+          color: black;
+          text-decoration: none;
+        }
+        a:visited {
+          color: black;
+          text-decoration: none;
+        }
+        a:hover {
+          color: black;
+          text-decoration: underline;
+        }
+        a:active {
+          color: black;
+          text-decoration: none;
+        }
+        #root {
+          margin-left: 39%;
+          margin-right: 39%;
+        }
+        .padded {
+          margin-bottom: 10px;
+          margin-left: 25%;
+          margin-right: 25%;
+        }
+        .butt {
+          width: 200px
+        }
+      </style>
+  <title>Video Example</title>
+</head>
+<body>
+    <div id="topnav"> 
+        <h1 id= "title" class= "column"> Eyelight</h1>
+        <div id="links" class="column"> 
+          <a href="#home">home</a>
+          <a href="#help">help</a>
+          <a href="#my-videos">my videos</a>
+          <a href="#upload" class="active"> upload </a>
+          <a href="#about"> links </a>
+        </div>
+        <div id="login-signup" class="column"> 
+          <a href="#login" style="color: blue">login</a>
+          <a href="#signup" style="color: blue">signup</a>
+        </div>
+    </div>
+      
+  
+  
+  <div id="root">
+      <h2 id="text" style="text-align: center"> Video</h2>
+  <button onclick="setCurTime()" type="button" class="padded butt">Set time position to where the ML found out the object</button><br> 
+  <video id = "video" width="320" height="240" controls>
+    <source src={{ url_for('static', filename="surgeryoutput.mp4") }} type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  </div>
+
+  <div id="back">
+  <form>
+    <input type="button" value="Go back!" onclick="history.back()">
+  </form>
+</div>
+
+  <script>
+      var vid = document.getElementById("video");
+  function setCurTime() { 
+  vid.currentTime= 7;
+  } 
+  </script> 
+
+  <!-- <form action="/result" method="post" id="root">
+    <button type="submit">Click me to see text</button>
+ </form> -->
+</body>
+</html>
