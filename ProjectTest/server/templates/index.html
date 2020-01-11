@@ -1,0 +1,142 @@
+<html>
+  <head lang="en">
+      <style> 
+          #topnav {
+            height: 100px;
+            padding: 15px;
+            margin-left: 10%;
+            padding-left: 12%;
+          }
+          #title {
+            color: DodgerBlue;
+            padding: 0px 15px 0px 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+          }
+          .column {
+            float: left;
+          }
+          #text {
+            padding: 10px;
+          }
+          a {
+            padding: 8px;
+          }
+          #links {
+            margin: 9.75px 0px;
+            padding-left: 60px
+          }
+          #login-signup {
+            margin: 9.75px 0px;
+            padding-left: 60px
+          }
+          a:link {
+            color: black;
+            text-decoration: none;
+          }
+          a:visited {
+            color: black;
+            text-decoration: none;
+          }
+          a:hover {
+            color: black;
+            text-decoration: underline;
+          }
+          a:active {
+            color: black;
+            text-decoration: none;
+          }
+          #root {
+            margin-left: 39%;
+            margin-right: 39%;
+          }
+          .button {
+              margin: 20px;
+          }
+          
+  </style>
+
+    <meta charset="UTF-8">
+    <title>Flask React</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- styles -->
+  </head>
+  <body>
+      <div id="topnav"> 
+          <h1 id= "title" class= "column"> Eyelight</h1>
+          <div id="links" class="column"> 
+            <a href="#home">home</a>
+            <a href="#help">help</a>
+            <a href="#my-videos">my videos</a>
+            <a href="#upload" class="active"> upload </a>
+            <a href="#about"> links </a>
+          </div>
+          <div id="login-signup" class="column"> 
+            <a href="#login" style="color: blue">login</a>
+            <a href="#signup" style="color: blue">signup</a>
+          </div>
+  </div>
+  
+    <div class="container">
+      <h1>Flask React</h1>
+      <br>
+      <div id="content"></div>
+      <div id="root"></div>
+    </div>
+    <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script type="text/jsx">
+
+    
+
+      /*** @jsx React.DOM */
+
+    
+
+      var realPython = React.createClass({
+        render: function() {
+          return (<h2>Greetings, from Real Python!</h2>);
+        }
+      });
+
+      ReactDOM.render(
+        React.createElement(realPython, null),
+        document.getElementById('content')
+      );
+
+      class form1 extends React.Component{
+        render(){
+            return (
+                <div class="form">
+    
+                    <form action="handleUpload" method="post" enctype="multipart/form-data" id="root">
+                      <input type="file" name="photo" class="button"/>{"\n"}
+                        <input type="submit" value="Upload" class="button"/>
+                    </form>
+                </div>
+            );
+        }
+    }
+
+    var form2 = React.createClass({
+      render: function() {
+        return (<h2>Greetings, from Real Python!</h2>);
+      }
+    });
+    
+    
+    ReactDOM.render(
+        React.createElement(form1, null),
+        document.getElementById('root')
+    );
+
+    </script>
+
+    <form action="/handleUpload" method="post" enctype="multipart/form-data" id="root">
+      <input type="file" name="photo" class="button"/><BR>
+          <input type="submit" value="Upload" class="button"/>
+    </form> 
+  </body>
+</html>

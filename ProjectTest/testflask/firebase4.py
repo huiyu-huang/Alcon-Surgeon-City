@@ -8,7 +8,7 @@ firebase_admin.initialize_app(cred, {
 db = firestore.client()
 bucket = storage.bucket()
 blob = bucket.blob('TEST2.txt') #what the file name will be called on firebase
-outfile='TEST.txt' #what file you want to upload to firebase
+outfile='TEST.txt' #what file you want to upload/save to firebase
 
-#how to upload file
+#how to save file to firebase
 blob.upload_from_filename(outfile)
