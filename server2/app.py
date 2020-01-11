@@ -4,7 +4,7 @@ import sys
 from database import upload, download
 
 import moviepy.editor as mp
-from joshfile import uploadvideo
+#from joshfile import uploadvideo
 
 from flask import Flask, request, render_template, url_for, redirect
 #from audioRead import audio_read
@@ -14,9 +14,14 @@ app = Flask(__name__,static_folder='static')
 #line below is for place to save video
 uploads_dir = os.path.join(app.root_path, 'static')
 
-#home page
+#home page, will be the login/signup page
 @app.route("/")                   
 def start():
+    return render_template('login.html')
+
+#upload page, already done
+@app.route("/upload")                   
+def uploader():
     return render_template('sendvideo.html')
 
 #video result page
@@ -44,7 +49,23 @@ def handleFileUpload():
             #downloads the video to the static folder from firebase
             download("static/surgeryoutput.mp4")
 
-    return render_template('video.html')
+    return render_template('videoresult.html')
+
+#help page, will literally be text
+@app.route("/help")                   
+def help():
+    return render_template('sendvideo.html')
+
+#uploaded video, can get videos back from here
+@app.route("/myvideo")                   
+def myvideo():
+    return render_template('sendvideo.html')
+
+
+###I don't know what links are
+@app.route("/links")                   
+def links():
+    return render_template('sendvideo.html')
 
 
 
