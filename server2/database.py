@@ -18,6 +18,7 @@ def upload(video):
     #how to upload file
     blob.upload_from_filename(outfile)
 
+
 def download(video):
     global count
     if  count == 0:
@@ -32,6 +33,6 @@ def download(video):
     blob = bucket.blob('static/surgeryoutput.mp4') #what the file name will be called on firebase
 
     #how to upload file
-    with open("harvard.mp4", "wb") as file_obj:
+    with open("static/harvard.mp4", "wb") as file_obj:
         blob.download_to_file(file_obj)
 

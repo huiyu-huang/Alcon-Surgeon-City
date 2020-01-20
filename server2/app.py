@@ -1,6 +1,7 @@
 from database import *
 import os
 import sys
+import time
 from database import upload, download
 
 import moviepy.editor as mp
@@ -11,13 +12,20 @@ from flask import Flask, request, render_template, url_for, redirect
 #import numpy as np
 app = Flask(__name__,static_folder='static')
 
+#value is the id
+value = "1"
+try:
+    os.makedirs("static/"+value)
+except:
+    pass
+
 #line below is for place to save video
 uploads_dir = os.path.join(app.root_path, 'static')
 
 #home page, will be the login/signup page
 @app.route("/")                   
 def start():
-    return render_template('login.html')
+    return render_template('sendvideo.html')
 
 #upload page, already done
 @app.route("/upload")                   
@@ -33,7 +41,7 @@ def handleFileUpload():
         vid = request.files['photo']
         if vid.filename != '':
             #saves the video in the static folder as surgeryoutput.mp4
-            vid.save(os.path.join(uploads_dir, 'surgeryoutput.mp4'))
+            vid.save(os.path.join(uploads_dir, value+'\surgeryoutput.mp4'))
 
             #shortens the video if needed
             #clip = mp.VideoFileClip(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename)).subclip(0,30)
@@ -42,12 +50,15 @@ def handleFileUpload():
             #uploadvideo(vid.filename)
 
             #uploads the result video to the static folder to firebase
-            upload("static/surgeryoutput.mp4")
+            upload("static/"+value+"\surgeryoutput.mp4")
 
             #upload("test.txt")
 
             #downloads the video to the static folder from firebase
             download("static/surgeryoutput.mp4")
+
+            #this is to buffer the correct video
+            time.sleep(1)
 
     return render_template('videoresult.html')
 
