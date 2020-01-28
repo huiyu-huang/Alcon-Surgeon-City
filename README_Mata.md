@@ -1,3 +1,10 @@
+1/26/20
+I am conintuing to work on the UI. I will push to github before our checkup on Tuesday
+-------------------------------------------------------------------------------------------
+1/19/20
+I Have been working on getting used to react with the tutorials and stuff that was suggested to us.
+I will begin to make the Ui for the following week
+-------------------------------------------------------------------------------------
 11/7/19
 I attempted to add the submodule of where I worked on the heroku web app. however
 when I attempted to go into the directory, it gave a 404 not found error. I am going to
