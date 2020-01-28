@@ -1,3 +1,5 @@
+The directory path you are in right now is the root
+
 Before: pip3 install -r requirements.txt ( install programs in requirements)
 pip freeze > requirements.txt (in case of updates, list the programs into the requirements.txt)
 1. python app.py or double click app.py. This opens up the localhost server at http://localhost:5000/.

@@ -30,9 +30,9 @@ def download(video):
     
     db = firestore.client()
     bucket = storage.bucket()
-    blob = bucket.blob('static/surgeryoutput.mp4') #what the file name will be called on firebase
+    blob = bucket.blob(video) #what the file name will be called on firebase
 
     #how to upload file
-    with open("static/harvard.mp4", "wb") as file_obj:
+    with open("static/output.mp4", "wb") as file_obj:
         blob.download_to_file(file_obj)
 
