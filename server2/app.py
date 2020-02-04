@@ -3,18 +3,40 @@ import os
 import sys
 import time
 import shutil
+import pyrebase
 from database import upload, download
 
-import moviepy.editor as mp
+#import moviepy.editor as mp
 #from joshfile import uploadvideo
 
-from flask import Flask, request, render_template, url_for, redirect
+from flask import *
+#Flask, request, render_template, url_for, redirect
 #from audioRead import audio_read
 #import numpy as np
 app = Flask(__name__,static_folder='static')
 
+
+#config thing
+config = {
+  # confidential
+  "apiKey": "",
+  "authDomain": "",
+  "databaseURL": "",
+  "projectId": "",
+  "storageBucket": "",
+  "messagingSenderId": "",
+  "appId": "",
+  "measurementId": ""
+}
+
+
+firebase = pyrebase.initialize_app(config)
+
+auth = firebase.auth()
+
+
 #value is the id
-value = "1"
+
 
 
 
@@ -22,16 +44,24 @@ value = "1"
 uploads_dir = os.path.join(app.root_path, 'static')
 
 #home page, will be the login/signup page
-@app.route("/")                   
-def start():
+@app.route("/", methods=['GET', 'POST'])                   
+def login():
+    unsuccessful = 'Incorrect email or password entered'
+    successful = 'Login successful'
+    if request.method == 'POST':
+	    email = request.form['name']
+	    password = request.form['pass']
+	    try:
+		    auth.sign_in_with_email_and_password(email, password)
+		    value = email
+		    return redirect(url_for('upload'))
+                                
+		    #return render_template('login.html', s=successful) # replace???
+	    except:
+		    return render_template('login.html', us=unsuccessful)
     
-    #make directory folder for the video
-    try:
-        os.makedirs("static/"+value)
-        #os.rmdir("static/"+value)
-    except:
-        pass
-    return render_template('sendvideo.html')
+    
+    return render_template('login.html')
 
 #logoff page
 @app.route("/logoff")                   
@@ -51,6 +81,12 @@ def deleteaccount():
 #upload page, already done
 @app.route("/upload")                   
 def uploader():
+    #make directory folder for the video
+    try:
+        os.makedirs("static/"+value)
+        #os.rmdir("static/"+value)
+    except:
+        pass
     return render_template('sendvideo.html')
 
 #video result page, also done

@@ -1,82 +1,44 @@
+<!DOCTYPE html>
 <html>
-    <head>
-            <style> 
-                    #topnav {
-                      height: 100px;
-                      padding: 15px;
-                      margin-left: 10%;
-                      padding-left: 12%;
-                    }
-                    #title {
-                      color: DodgerBlue;
-                      padding: 0px 15px 0px 10px;
-                      margin-top: 0px;
-                      margin-bottom: 0px;
-                    }
-                    .column {
-                      float: left;
-                    }
-                    #text {
-                      padding: 10px;
-                    }
-                    a {
-                      padding: 8px;
-                    }
-                    #links {
-                      margin: 9.75px 0px;
-                      padding-left: 60px
-                    }
-                    #login-signup {
-                      margin: 9.75px 0px;
-                      padding-left: 60px
-                    }
-                    a:link {
-                      color: black;
-                      text-decoration: none;
-                    }
-                    a:visited {
-                      color: black;
-                      text-decoration: none;
-                    }
-                    a:hover {
-                      color: black;
-                      text-decoration: underline;
-                    }
-                    a:active {
-                      color: black;
-                      text-decoration: none;
-                    }
-                    #root {
-                      margin-left: 39%;
-                      margin-right: 39%;
-                    }
-                    .button {
-                        margin: 20px;
-                    }
-                    
-            </style>
-            <meta name="google-signin-scope" content="profile email">
-            <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-            <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <title>Simple file upload using Python Flask</title>
-    </head>
-    <body>
-      <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-      <script>
-        function onSignIn(googleUser) {
-          // Useful data for your client-side scripts:
-          var profile = googleUser.getBasicProfile();
-          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-          console.log('Full Name: ' + profile.getName());
-          console.log('Given Name: ' + profile.getGivenName());
-          console.log('Family Name: ' + profile.getFamilyName());
-          console.log("Image URL: " + profile.getImageUrl());
-          console.log("Email: " + profile.getEmail());
-  
-          // The ID token you need to pass to your backend:
-          var id_token = googleUser.getAuthResponse().id_token;
-          console.log("ID Token: " + id_token);
-        }
-      </script>
-    </body>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		{% if s %}
+			<div class="alert alert-success">
+				<h2>{{s}}</h2>
+			</div>
+		{% endif %}
+
+		{% if us %}
+			<div class="alert alert-danger">
+				<h2>{{us}}</h2>
+			</div>
+		{% endif %}
+
+      <form action="/" method="post">
+        <h2>Please sign in</h2>
+        <label for="inputEmail">Email address</label>
+        <input type="email" id="inputEmail" name="name"  placeholder="Email address" required autofocus>
+        <label for="inputPassword">Password</label>
+        <input type="password" id="inputPassword" name="pass"  placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div>
+    <footer></footer>
+</body>
 </html>
