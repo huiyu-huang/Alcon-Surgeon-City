@@ -28,7 +28,7 @@ def basic():
 		password = request.form['pass']
 		try:
 			auth.sign_in_with_email_and_password(email, password)
-			return render_template('login.html', s=successful)
+			return render_template('login.html', s=successful) # replace???
 		except:
 			return render_template('login.html', us=unsuccessful)
 
