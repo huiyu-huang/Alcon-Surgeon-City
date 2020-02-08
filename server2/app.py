@@ -19,14 +19,14 @@ app = Flask(__name__,static_folder='static')
 #config thing
 config = {
   # confidential
-  "apiKey": "",
-  "authDomain": "",
-  "databaseURL": "",
-  "projectId": "",
-  "storageBucket": "",
-  "messagingSenderId": "",
-  "appId": "",
-  "measurementId": ""
+  "apiKey": "AIzaSyBfJeaQjeU2q_g1zaC_rvJ2D2jEDq58umI",
+  "authDomain": "eyelight-vids.firebaseapp.com",
+  "databaseURL": "https://eyelight-vids.firebaseio.com",
+  "projectId": "eyelight-vids",
+  "storageBucket": "eyelight-vids.appspot.com",
+  "messagingSenderId": "359657414936",
+  "appId": "1:359657414936:web:f24f7ad0acd3a27a2afe6d",
+  "measurementId": "G-RHHY80M6DP"
 }
 
 
@@ -36,15 +36,14 @@ auth = firebase.auth()
 
 
 #value is the id
-
-
-
+global value
+value = "1"
 
 #line below is for place to save video
 uploads_dir = os.path.join(app.root_path, 'static')
 
 #home page, will be the login/signup page
-@app.route("/", methods=['GET', 'POST'])                   
+@app.route("/", methods=['GET', 'POST'])
 def login():
     unsuccessful = 'Incorrect email or password entered'
     successful = 'Login successful'
@@ -53,34 +52,32 @@ def login():
 	    password = request.form['pass']
 	    try:
 		    auth.sign_in_with_email_and_password(email, password)
-		    value = email
-		    return redirect(url_for('upload'))
-                                
-		    #return render_template('login.html', s=successful) # replace???
+		    return redirect(url_for('uploader')) # I believe this should be the correct "linking" line
+		    # return render_template('login.html', s=successful) # replaced
 	    except:
 		    return render_template('login.html', us=unsuccessful)
-    
-    
+
     return render_template('login.html')
 
 #logoff page
-@app.route("/logoff")                   
+@app.route("/logoff")
 def logoff():
     #return redirect(url_for('login')), if not logged in
-    
+
     return render_template('placeholder.html')
 
 #account setting?
-@app.route("/deleteaccount")                   
+@app.route("/deleteaccount")
 def deleteaccount():
     #return redirect(url_for('login')), if not logged in
-    
+
     return render_template('placeholder.html')
 
 
 #upload page, already done
-@app.route("/upload")                   
+@app.route("/upload")
 def uploader():
+    global value
     #make directory folder for the video
     try:
         os.makedirs("static/"+value)
@@ -92,21 +89,22 @@ def uploader():
 #video result page, also done
 @app.route("/handleUpload", methods=['POST'])
 def handleFileUpload():
+    global value
     # if there is a video in the file
     if 'photo' in request.files:
         #vid is the video stream
         vid = request.files['photo']
         if vid.filename != '':
-            
+
             #vid.save(os.path.join(uploads_dir, value+'/' +vid.filename))
-            
+
             #saves the video in the static folder as surgeryoutput.mp4
             vid.save(os.path.join(uploads_dir, value+'/surgeryoutput.mp4'))
             shutil.copy("static/" + value + "/surgeryoutput.mp4", "static/" + value + "/" + vid.filename)
 
             #duplicates the video
-            
-            
+
+
 
             #shortens the video if needed
             #clip = mp.VideoFileClip(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename)).subclip(0,30)
@@ -130,24 +128,23 @@ def handleFileUpload():
 
 
 #help page, will literally be text, no programs here
-@app.route("/help")                   
+@app.route("/help")
 def help():
     return render_template('placeholder.html')
 
 
 #uploaded video, can get videos back from here, list of video
-@app.route("/myvideo")                   
+@app.route("/myvideo")
 def myvideo():
     return render_template('placeholder.html')
 
 
 ###I don't know what links is used for
-@app.route("/links")                   
+@app.route("/links")
 def links():
     return render_template('placeholder.html')
 
 
 
-if __name__ == "__main__":        
+if __name__ == "__main__":
     app.run(host='0.0.0.0', debug = True)       # run the flask app, don't use debug mode for non local demo
-
