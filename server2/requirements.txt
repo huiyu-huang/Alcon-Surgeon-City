@@ -6,3 +6,4 @@ SpeechRecognition
 pydub
 moviepy
 numpy
+yarn

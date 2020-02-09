@@ -9,12 +9,12 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="logo192.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -25,29 +25,11 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script>window.token="({token})"</script>
   </head>
   <body>
-    <div id="topnav"> 
-      <h1 id= "title" class= "column"> Eyelight</h1>
-      <div id="links" class="column"> 
-        <a href="#home">home</a>
-        <a href="#help">help</a>
-        <a href="#my-videos">my videos</a>
-        <a href="#upload" class="active"> upload </a>
-        <a href="#about"> links </a>
-      </div>
-      <div id="login-signup" class="column"> 
-        <a href="#login" style="color: blue">login</a>
-        <a href="#signup" style="color: blue">signup</a>
-      </div>
-    </div>
-    <h3 id="text" style="text-align: center"> Upload a video to get a highlight </p>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
-    <p><a href="http://localhost:5000/upload">Visit W3Schools</a></p>
-
-
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
