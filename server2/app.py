@@ -19,14 +19,14 @@ app = Flask(__name__,static_folder='static')
 #config thing
 config = {
   # confidential
-  "apiKey": "",
-  "authDomain": "",
-  "databaseURL": "",
-  "projectId": "",
-  "storageBucket": "",
-  "messagingSenderId": "",
-  "appId": "",
-  "measurementId": ""
+  "apiKey": "AIzaSyBfJeaQjeU2q_g1zaC_rvJ2D2jEDq58umI",
+  "authDomain": "eyelight-vids.firebaseapp.com",
+  "databaseURL": "https://eyelight-vids.firebaseio.com",
+  "projectId": "eyelight-vids",
+  "storageBucket": "eyelight-vids.appspot.com",
+  "messagingSenderId": "359657414936",
+  "appId": "1:359657414936:web:f24f7ad0acd3a27a2afe6d",
+  "measurementId": "G-RHHY80M6DP"
 }
 
 
@@ -45,6 +45,7 @@ uploads_dir = os.path.join(app.root_path, 'static')
 #home page, will be the login/signup page
 @app.route("/", methods=['GET', 'POST'])
 def login():
+    global value
     unsuccessful = 'Incorrect email or password entered'
     successful = 'Login successful'
     if request.method == 'POST':
@@ -52,6 +53,7 @@ def login():
 	    password = request.form['pass']
 	    try:
 		    auth.sign_in_with_email_and_password(email, password)
+		    value = email
 		    return redirect(url_for('uploader')) # I believe this should be the correct "linking" line
 		    # return render_template('login.html', s=successful) # replaced
 	    except:
