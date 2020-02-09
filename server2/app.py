@@ -42,8 +42,12 @@ value = "1"
 #line below is for place to save video
 uploads_dir = os.path.join(app.root_path, 'static')
 
+##@app.route("/", methods=['GET', 'POST'])
+##def my_index():
+##    return render_template("index.html",token="Hello Flask+react")
+
 #home page, will be the login/signup page
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     global value
     unsuccessful = 'Incorrect email or password entered'
@@ -77,7 +81,7 @@ def deleteaccount():
 
 
 #upload page, already done
-@app.route("/upload")
+@app.route("/")
 def uploader():
     global value
     #make directory folder for the video
