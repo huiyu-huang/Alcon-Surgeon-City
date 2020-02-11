@@ -58,20 +58,20 @@
         <title>Simple file upload using Python Flask</title>
     </head>
     <body>
-            <div id="topnav"> 
-                    <h1 id= "title" class= "column"> Eyelight</h1>
-                    <div id="links" class="column"> 
-                      <a href="#home">home</a>
-                      <a href="#help">help</a>
-                      <a href="#my-videos">my videos</a>
-                      <a href="#upload" class="active"> upload </a>
-                      <a href="#about"> links </a>
-                    </div>
-                    <div id="login-signup" class="column"> 
-                      <a href="#login" style="color: blue">login</a>
-                      <a href="#signup" style="color: blue">signup</a>
-                    </div>
-            </div>
+      <div id="topnav"> 
+        <h1 id= "title" class= "column"> Eyelight</h1>
+        <div id="links" class="column"> 
+          <a href="/upload">home</a>
+          <a href="#help">help</a>
+          <a href=/handleUpload">my videos</a>
+          <a href="/upload" class="active"> upload </a>
+          <a href="#about"> links </a>
+        </div>
+        <div id="login-signup" class="column"> 
+          <a href="/" style="color: blue">logout</a>
+          <a href="#signup" style="color: blue">signup</a>
+        </div>
+    </div>
     
         <form action="/handleUpload" method="post" enctype="multipart/form-data" id="root">
             <input type="file" name="photo" class="button"/><BR>
