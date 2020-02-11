@@ -1,9 +1,10 @@
-import os
-import shutil
+
+
+#sys.path.insert(0,'ml/test.py')
 
 #os.rmdir("static/"+"1")
 #os.makedirs("static/"+"1")
 #os.makedirs("5")
 #os.rmdir("5")
 
-shutil.copy("static/" + "1" + "/surgery1clip.mp4", "static/" + "1/" + "harvard.mp4") 
+#shutil.copy("static/" + "1" + "/surgery1clip.mp4", "static/" + "1/" + "harvard.mp4") 

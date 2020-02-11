@@ -4,7 +4,17 @@ import sys
 import time
 import shutil
 import pyrebase
+import cv2
+import numpy as np
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
+
+
+
 from database import upload, download
+
+from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
+
 
 #import moviepy.editor as mp
 #from joshfile import uploadvideo
@@ -47,7 +57,7 @@ uploads_dir = os.path.join(app.root_path, 'static')
 ##    return render_template("index.html",token="Hello Flask+react")
 
 #home page, will be the login/signup page
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def login():
     global value
     unsuccessful = 'Incorrect email or password entered'
@@ -81,7 +91,7 @@ def deleteaccount():
 
 
 #upload page, already done
-@app.route("/")
+@app.route("/upload")
 def uploader():
     global value
     #make directory folder for the video
@@ -91,6 +101,49 @@ def uploader():
     except:
         pass
     return render_template('sendvideo.html')
+
+def get_output(file):
+  cap = cv2.VideoCapture("surgery1clip.mp4")
+  cap.set(cv2.CAP_PROP_FRAME_WIDTH,224) #set properties of video ahead of time to correct dimensions
+  cap.set(cv2.CAP_PROP_FRAME_HEIGHT,224)
+  fps = int(cap.get(5))
+  sample_period = 10
+
+  model = load_model("my_model.h5")
+
+  result = ""
+  frame_count = 0
+  while(cap.isOpened()):
+    for i in range(sample_period): #capture every frame, or every 5 frames, based on sample_period
+      ret, frame = cap.read()
+      frame_count = frame_count + 1
+      if (ret == False):
+        break
+   
+    if ret == True: 
+      
+      frame = cv2.resize(frame,(224,224))
+      frame = frame.astype(np.float32)
+      img_tensor = np.expand_dims(frame, axis=0)
+      img_tensor /= 255.
+
+      pred = model.predict(img_tensor)
+
+      result = result + "At time " + "{:.3f}".format(frame_count/fps) + " seconds detected tool "
+      result = result + str(np.argmax(pred)) + ","
+      
+      #cv2.imshow('frame',frame)
+
+      #if cv2.waitKey(1) & 0xFF == ord('q'):
+      #  break
+   
+    else:
+      break 
+   
+  cap.release()
+  return result
+   
+  #cv2.destroyAllWindows()
 
 #video result page, also done
 @app.route("/handleUpload", methods=['POST'])
@@ -110,7 +163,10 @@ def handleFileUpload():
 
             #duplicates the video
 
-
+            #ffmpeg alert
+            #cut()
+            #ffmpeg_extract_subclip("static/" + value + "/" + vid.filename, 0, 10, targetname="static/" + value + "/surgeryoutput.mp4")
+            
 
             #shortens the video if needed
             #clip = mp.VideoFileClip(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename)).subclip(0,30)
@@ -118,6 +174,7 @@ def handleFileUpload():
             #joshfile, will edit the video and saves it to the static folder as surgeryoutput.mp4
             #uploadvideo(vid.filename)
 
+            outputstring = get_output("static/" + value + "/" + vid.filename)
             #uploads the result video to the static folder to firebase
             upload("static/" +value+"/surgeryoutput.mp4")
             upload("static/" +value+"/" + vid.filename)
@@ -130,7 +187,8 @@ def handleFileUpload():
             #this is to buffer the correct video
             time.sleep(5)
 
-    return render_template('videoresult.html')
+    return render_template('videoresult.html',output = outputstring)
+
 
 
 #help page, will literally be text, no programs here

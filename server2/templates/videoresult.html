@@ -88,7 +88,38 @@
     Your browser does not support the video tag.
   </video>
   </div>
+  <script>
+    var div = document.createElement("div");
+    var content;
+    div.setAttribute("style", ""
+    +"color: black;"
+    +"padding: 15px;"
+    +"width: 50%;"
+    +"height: 100px;"
+    +"overflow: scroll;"
+    +"border: 1px solid black;"
+    +"margin: auto;");
+    
 
+    function addElement(output_string,document,div) {
+      var text = document.createTextNode(output_string);
+      var content = document.createElement("p");
+      var br = document.createElement("br");
+      content.appendChild(text);
+      content.appendChild(br);
+      div.appendChild(content);
+    }
+
+    output_string = "{{output}}";
+    result = output_string.split(",");
+    for (item of result) {
+      addElement(item,document,div)
+    }
+    document.body.appendChild(div);
+
+  </script>
+
+  
   <div id="back">
   <form>
     <input type="button" value="Go back!" onclick="history.back()">

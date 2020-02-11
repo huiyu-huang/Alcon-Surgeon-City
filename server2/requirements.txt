@@ -6,4 +6,7 @@ SpeechRecognition
 pydub
 moviepy
 numpy
-yarn
+tensorflow==2.0
+matplotlib
+opencv-python
+pyrebase4
