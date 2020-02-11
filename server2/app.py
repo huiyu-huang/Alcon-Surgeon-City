@@ -13,7 +13,7 @@ from tensorflow.keras.preprocessing import image
 
 from database import upload, download
 
-from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
+#from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
 
 #import moviepy.editor as mp
