@@ -2,9 +2,6 @@ gunicorn
 flask
 firebase_admin
 databases
-
-
-
 numpy
 tensorflow
 matplotlib
