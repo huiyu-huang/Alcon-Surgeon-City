@@ -2,11 +2,8 @@ gunicorn
 flask
 firebase_admin
 databases
-SpeechRecognition
-pydub
-moviepy
 numpy
-tensorflow==2.0.1
+tensorflow
 matplotlib
 opencv-python
 pyrebase4
