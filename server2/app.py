@@ -8,6 +8,7 @@ import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+#from fpdf import FPDF
 
 
 
@@ -47,7 +48,7 @@ auth = firebase.auth()
 
 #value is the id
 global value
-value = "1"
+value = "guest"
 
 #line below is for place to save video
 uploads_dir = os.path.join(app.root_path, 'static')
@@ -100,10 +101,14 @@ def uploader():
         #os.rmdir("static/"+value)
     except:
         pass
+
+    #textfile = open("storage/"+value +".txt","w+")
+    #textfile.close()
+    
     return render_template('sendvideo.html')
 
 def get_output(file):
-  cap = cv2.VideoCapture("surgery1clip.mp4")
+  cap = cv2.VideoCapture(file)
   cap.set(cv2.CAP_PROP_FRAME_WIDTH,224) #set properties of video ahead of time to correct dimensions
   cap.set(cv2.CAP_PROP_FRAME_HEIGHT,224)
   fps = int(cap.get(5))
@@ -163,10 +168,6 @@ def handleFileUpload():
 
             #duplicates the video
 
-            #ffmpeg alert
-            #cut()
-            #ffmpeg_extract_subclip("static/" + value + "/" + vid.filename, 0, 10, targetname="static/" + value + "/surgeryoutput.mp4")
-            
 
             #shortens the video if needed
             #clip = mp.VideoFileClip(os.path.join('C:/Users/Chris/Documents/GitHub/Alcon-Surgeon-City/ProjectTest/server/static', vid.filename)).subclip(0,30)
@@ -175,9 +176,47 @@ def handleFileUpload():
             #uploadvideo(vid.filename)
 
             outputstring = get_output("static/" + value + "/" + vid.filename)
+
+            
             #uploads the result video to the static folder to firebase
             upload("static/" +value+"/surgeryoutput.mp4")
             upload("static/" +value+"/" + vid.filename)
+
+            textfile = open("storage/"+value +".txt","a+")  
+            textfile.close()
+            
+            #write the saved video into the txt file
+            with open("storage/"+value +".txt", "r") as f:
+                
+               
+                
+                x = "static/" +value+"/" + vid.filename
+                if x not in f.read():
+                    textfile = open("storage/"+value +".txt","a+") 
+                    textfile.write("static/" +value+"/" + vid.filename + "\n")
+
+##                    # text into pdf
+##                    # save FPDF() class into  
+##                    # a variable pdf 
+##                    pdf = FPDF()    
+##   
+##                    # Add a page 
+##                    pdf.add_page() 
+##   
+##                    # set style and size of font  
+##                    # that you want in the pdf 
+##                    pdf.set_font("Arial", size = 15)
+##                    
+##                    # insert the texts in pdf 
+##                    for y in textfile: 
+##                        pdf.cell(200, 10, txt = y, ln = 1, align = 'C') 
+##   
+##                    # save the pdf with name .pdf 
+##                    pdf.output("storage/"+value +".pdf")
+                    
+                    textfile.close()
+  
+            
 
             #upload("test.txt")
 
@@ -194,13 +233,19 @@ def handleFileUpload():
 #help page, will literally be text, no programs here
 @app.route("/help")
 def help():
-    return render_template('placeholder.html')
+    return render_template('help.html')
 
 
 #uploaded video, can get videos back from here, list of video
 @app.route("/myvideo")
 def myvideo():
-    return render_template('placeholder.html')
+##    hists = os.listdir('static/plots')
+##    hists = ['plots/' + file for file in hists]
+    return render_template('myvideo.html')
+
+@app.route("/myvideoresult")#, methods=['POST'])
+def myvideoresult():
+    return render_template('myvideoresult.html')
 
 
 ###I don't know what links is used for

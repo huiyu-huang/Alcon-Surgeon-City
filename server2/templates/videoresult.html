@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style> 
+    <style>
         #topnav {
           height: 100px;
           padding: 15px;
@@ -63,31 +63,32 @@
   <title>Video Example</title>
 </head>
 <body>
-  <div id="topnav"> 
+  <div id="topnav">
     <h1 id= "title" class= "column"> Eyelight</h1>
-    <div id="links" class="column"> 
+    <div id="links" class="column">
       <a href="/upload">home</a>
-      <a href="#help">help</a>
-      <a href=/handleUpload">my videos</a>
+      <a href="/help">help</a>
+      <a href="/myvideo">my videos</a>
       <a href="/upload" class="active"> upload </a>
-      <a href="#about"> links </a>
+      <a href="/help"> links </a>
     </div>
-    <div id="login-signup" class="column"> 
+    <div id="login-signup" class="column">
       <a href="/" style="color: blue">logout</a>
-      <a href="#signup" style="color: blue">signup</a>
+      <a href="/" style="color: blue">signup</a>
     </div>
 </div>
-      
-  
-  
+
+
+
   <div id="root">
       <h2 id="text" style="text-align: center"> Video</h2>
-  <button onclick="setCurTime()" type="button" class="padded butt">Set time position to where the ML found out the object</button><br> 
+  <button onclick="setCurTime()" type="button" class="padded butt">Set time position to where the ML found out the object</button><br>
   <video id = "video" width="320" height="240" controls>
     <source src={{ url_for('static', filename="output.mp4") }} type="video/mp4">
     Your browser does not support the video tag.
   </video>
   </div>
+
   <script>
     var div = document.createElement("div");
     var content;
@@ -99,7 +100,7 @@
     +"overflow: scroll;"
     +"border: 1px solid black;"
     +"margin: auto;");
-    
+
 
     function addElement(output_string,document,div) {
       var text = document.createTextNode(output_string);
@@ -119,7 +120,7 @@
 
   </script>
 
-  
+
   <div id="back">
   <form>
     <input type="button" value="Go back!" onclick="history.back()">
@@ -128,10 +129,10 @@
 
   <script>
       var vid = document.getElementById("video");
-  function setCurTime() { 
+  function setCurTime() {
   vid.currentTime= 7;
-  } 
-  </script> 
+  }
+  </script>
 
   <!-- <form action="/result" method="post" id="root">
     <button type="submit">Click me to see text</button>

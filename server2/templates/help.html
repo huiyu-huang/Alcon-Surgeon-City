@@ -1,7 +1,6 @@
 <html>
     <head>
             <style>
-
                     #topnav {
                       height: 100px;
                       padding: 15px;
@@ -31,6 +30,9 @@
                       margin: 9.75px 0px;
                       padding-left: 60px
                     }
+                    #about{
+                      text-align: center;
+                    }
                     a:link {
                       color: black;
                       text-decoration: none;
@@ -55,19 +57,8 @@
                         margin: 20px;
                     }
 
-                    #myProgress {
-                      width: 100%;
-                      background-color: #ddd;
-                    }
-
-                    #myBar {
-                      width: 1%;
-                      height: 30px;
-                      background-color: #4CAF50;
-                    }
-
             </style>
-        <title>Eyelight</title>
+        <title>Simple file upload using Python Flask</title>
     </head>
     <body>
       <div id="topnav">
@@ -86,41 +77,26 @@
     </div>
 
 
+    <div id = "about2">
+      <h2>About</h2>
+      <p> This is our senior Capstone Project. We are partnered with Alcon.</p>
+      <p>Also known as True vision. Our goal was to create something that </p>
+      <p> could help surgeons, specifically eye surgeons do their job better </p>
+      <p> we took a post operation approach to the problem and attempted to use </p>
+      <p> machine learing to solve the problem by providing surgeons with a post </p>
+      <p>opertion highlight of the significant parts of the surgery. </p>
+      <p>To get started, click on home and upload a .mp4 file with surgery tools.</p>
+    </div>
+        <!-- We will put our React component inside this div. -->
+        <div id="like_button_container"></div>
 
-        <form action="/handleUpload" method="post" enctype="multipart/form-data" id="root">
-            <input type="file" name="photo" class="button"/><BR>
-                <input type="submit" value="Upload" class="button"/>
-        </form>
+        <!-- Load React. -->
+        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
-
-        <br>
-        <button onclick="move()">Click here to get a sense of where the video is submitted</button>
-
-
-        <script>
-var i = 0;
-function move() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("myBar");
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
-</script>
-
+        <!-- Load our React component. -->
+        <script src="App.js"></script>
 
 
     </body>

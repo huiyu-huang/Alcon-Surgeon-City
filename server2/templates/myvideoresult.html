@@ -1,5 +1,6 @@
 <html>
     <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <style>
 
                     #topnav {
@@ -55,17 +56,6 @@
                         margin: 20px;
                     }
 
-                    #myProgress {
-                      width: 100%;
-                      background-color: #ddd;
-                    }
-
-                    #myBar {
-                      width: 1%;
-                      height: 30px;
-                      background-color: #4CAF50;
-                    }
-
             </style>
         <title>Eyelight</title>
     </head>
@@ -87,41 +77,25 @@
 
 
 
-        <form action="/handleUpload" method="post" enctype="multipart/form-data" id="root">
-            <input type="file" name="photo" class="button"/><BR>
-                <input type="submit" value="Upload" class="button"/>
-        </form>
+    <div id="root">
+        <h2 id="text" style="text-align: center"> Video</h2>
+    <button onclick="setCurTime()" type="button" class="padded butt">Set time position to where the ML found out the object</button><br>
+    <video id = "video" width="320" height="240" controls>
+      <source src={{ url_for('static', filename="guest/surgery1clip.mp4") }} type="video/mp4">
+      Your browser does not support the video tag.
 
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
-
-        <br>
-        <button onclick="move()">Click here to get a sense of where the video is submitted</button>
+    </video>
+    </div>
 
 
-        <script>
-var i = 0;
-function move() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("myBar");
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
-</script>
+
+
+
+
 
 
 
     </body>
+
+
 </html>
