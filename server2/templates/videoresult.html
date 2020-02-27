@@ -1,88 +1,95 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <style>
-        #topnav {
-          height: 100px;
-          padding: 15px;
-          margin-left: 10%;
-          padding-left: 12%;
-        }
-        #title {
-          color: DodgerBlue;
-          padding: 0px 15px 0px 10px;
-          margin-top: 0px;
-          margin-bottom: 0px;
-        }
-        .column {
-          float: left;
-        }
-        #text {
-          padding: 10px;
-        }
-        a {
-          padding: 8px;
-        }
-        #links {
-          margin: 9.75px 0px;
-          padding-left: 60px
-        }
-        #login-signup {
-          margin: 9.75px 0px;
-          padding-left: 60px
-        }
-        a:link {
-          color: black;
-          text-decoration: none;
-        }
-        a:visited {
-          color: black;
-          text-decoration: none;
-        }
-        a:hover {
-          color: black;
-          text-decoration: underline;
-        }
-        a:active {
-          color: black;
-          text-decoration: none;
-        }
-        #root {
-          margin-left: 39%;
-          margin-right: 39%;
-        }
-        .padded {
-          margin-bottom: 10px;
-          margin-left: 25%;
-          margin-right: 25%;
-        }
-        .butt {
-          width: 200px
-        }
-      </style>
-  <title>Video Example</title>
-</head>
-<body>
-  <div id="topnav">
-    <h1 id= "title" class= "column"> Eyelight</h1>
-    <div id="links" class="column">
-      <a href="/upload">home</a>
-      <a href="/help">help</a>
-      <a href="/myvideo">my videos</a>
-      <a href="/upload" class="active"> upload </a>
-      <a href="/help"> links </a>
-    </div>
-    <div id="login-signup" class="column">
-      <a href="/" style="color: blue">logout</a>
-      <a href="/" style="color: blue">signup</a>
-    </div>
-</div>
+    <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            <style>
+            body {
+	padding-top: 60px;
+}
+nav {
+  .navbar-brand {font-size: 40px;
+  text-align: left;
+  color: blue;
+
+}
+	.navbar-toggle {margin: 13px 15px 13px 0;}
+	a {
+		font-size: 16px;
+		padding-bottom: 18px;
+		padding-top: 18px ;
+    transition: all 0.3s ease;
+	}
+}
+#root {
+  margin-left: 40%;
+  margin-right: 40%;
+}
+.button {
+    margin: 20px;
+}
+.padded {
+  margin-bottom: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+.butt {
+  width: 200px
+}
+#back {
+  margin-left: 47%;
+  margin-right: 47%;
+}
+.parent {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.image1 {
+  position: relative;
+  top: 0;
+  left: 450px;
+  border: 1px blue solid;
+}
+.image2 {
+  position: absolute;
+  top: 490px;
+  left: 450px;
+  border: 1px green solid;
+}
+            </style>
+        <title>Eyelight</title>
+    </head>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <a class="navbar-brand"  href="/help">Eyelight</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/help">Features</a></li>
+        <li><a href="/myvideos">Video</a></li>
+        <li><a href="/upload">Upload</a></li>
+        <li><a href="/">Signoff</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<body style="background-color:#DDDDDD;">
 
 
   <div id="root">
-      <h2 id="text" style="text-align: center"> Video</h2>
-  <button onclick="setCurTime()" type="button" class="padded butt">Set time position to where the ML found out the object</button><br>
+      <h2 id="text" style="text-align: center"> Report</h2>
   <video id = "video" width="320" height="240" controls>
     <source src={{ url_for('static', filename="output.mp4") }} type="video/mp4">
     Your browser does not support the video tag.
@@ -120,19 +127,15 @@
 
   </script>
 
+  <div class="parent">
+  <img class="image1" src="https://i.imgur.com/NPCl2f2.jpg" alt="tools">
+  <img class="image2" src="https://i.imgur.com/YoQRsQX.jpg" alt="pygraph">
+  </div>
 
-  <div id="back">
-  <form>
-    <input type="button" value="Go back!" onclick="history.back()">
-  </form>
-</div>
 
-  <script>
-      var vid = document.getElementById("video");
-  function setCurTime() {
-  vid.currentTime= 7;
-  }
-  </script>
+  
+
+
 
   <!-- <form action="/result" method="post" id="root">
     <button type="submit">Click me to see text</button>

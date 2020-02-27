@@ -314,8 +314,8 @@ def help():
 
 
 #uploaded video, can get videos back from here, list of video
-@app.route("/myvideo")
-def myvideo():
+@app.route("/myvideos")
+def myvideos():
 ##    hists = os.listdir('static/plots')
 ##    hists = ['plots/' + file for file in hists]
     return render_template('myvideo.html')
