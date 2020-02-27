@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Message from './Message';
 import Progress from './Progress';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom'
 
 const FileUpload = () => {
   const [file, setFile] = useState('');
@@ -9,6 +10,7 @@ const FileUpload = () => {
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
   const [uploadPercentage, setUploadPercentage] = useState(0);
+  const [redirect,setredirect] = useState(false);
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -42,6 +44,8 @@ const FileUpload = () => {
       setUploadedFile({ fileName, filePath });
 
       setMessage('File Uploaded');
+      setredirect(true);
+
     } catch (err) {
       if (err.response.status === 500) {
         setMessage('There was a problem with the server');
@@ -54,6 +58,7 @@ const FileUpload = () => {
   return (
     <Fragment>
       {message ? <Message msg={message} /> : null}
+      {redirect ? (<Redirect to='/Watch' />):null}
       <form onSubmit={onSubmit}>
         <div className='custom-file mb-4'>
           <input
@@ -75,7 +80,7 @@ const FileUpload = () => {
           className='btn btn-primary btn-block mt-4'
         />
       </form>
-      {uploadedFile ? (
+       {uploadedFile ? (
         <div className='row mt-5'>
           <div className='col-md-6 m-auto'>
             <h3 className='text-center'>{uploadedFile.fileName}</h3>
