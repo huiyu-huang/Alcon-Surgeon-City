@@ -1,102 +1,79 @@
 <html>
     <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
             <style>
-                    #topnav {
-                      height: 100px;
-                      padding: 15px;
-                      margin-left: 10%;
-                      padding-left: 12%;
-                    }
-                    #title {
-                      color: DodgerBlue;
-                      padding: 0px 15px 0px 10px;
-                      margin-top: 0px;
-                      margin-bottom: 0px;
-                    }
-                    .column {
-                      float: left;
-                    }
-                    #text {
-                      padding: 10px;
-                    }
-                    a {
-                      padding: 8px;
-                    }
-                    #links {
-                      margin: 9.75px 0px;
-                      padding-left: 60px
-                    }
-                    #login-signup {
-                      margin: 9.75px 0px;
-                      padding-left: 60px
-                    }
-                    #about{
-                      text-align: center;
-                    }
-                    a:link {
-                      color: black;
-                      text-decoration: none;
-                    }
-                    a:visited {
-                      color: black;
-                      text-decoration: none;
-                    }
-                    a:hover {
-                      color: black;
-                      text-decoration: underline;
-                    }
-                    a:active {
-                      color: black;
-                      text-decoration: none;
-                    }
-                    #root {
-                      margin-left: 39%;
-                      margin-right: 39%;
-                    }
-                    .button {
-                        margin: 20px;
-                    }
+            body {
+	padding-top: 60px;
+}
+nav {
+  .navbar-brand {font-size: 40px;
+  text-align: left;
+  color: blue;
+
+}
+	.navbar-toggle {margin: 13px 15px 13px 0;}
+	a {
+		font-size: 16px;
+		padding-bottom: 18px;
+		padding-top: 18px ;
+    transition: all 0.3s ease;
+	}
+}
+#about2 {
+  margin-left: 39%;
+  margin-right: 39%;
+}
+
+#root {
+  margin-left: 39%;
+  margin-right: 39%;
+}
+
+
 
             </style>
-        <title>Simple file upload using Python Flask</title>
+        <title>Eyelight</title>
     </head>
-    <body>
-      <div id="topnav">
-        <h1 id= "title" class= "column"> Eyelight</h1>
-        <div id="links" class="column">
-          <a href="/upload">home</a>
-          <a href="/help">help</a>
-          <a href="/myvideo">my videos</a>
-          <a href="/upload" class="active"> upload </a>
-          <a href="/help"> links </a>
-        </div>
-        <div id="login-signup" class="column">
-          <a href="/" style="color: blue">logout</a>
-          <a href="/" style="color: blue">signup</a>
-        </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <a class="navbar-brand"  href="/help">Eyelight</a>
     </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="/home">Home</a></li>
+        <li class="active"><a href="/help">Features</a></li>
+        <li><a href="/myvideos">Video</a></li>
+        <li><a href="/upload">Upload</a></li>
+        <li><a href="/">Signoff</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<body style="background-color:#DDDDDD;">
 
 
     <div id = "about2">
-      <h2>About</h2>
-      <p> This is our senior Capstone Project. We are partnered with Alcon.</p>
-      <p>Also known as True vision. Our goal was to create something that </p>
-      <p> could help surgeons, specifically eye surgeons do their job better </p>
-      <p> we took a post operation approach to the problem and attempted to use </p>
-      <p> machine learing to solve the problem by providing surgeons with a post </p>
-      <p>opertion highlight of the significant parts of the surgery. </p>
+      <h2 id = "root">About</h2>
+      <p> This is our senior Capstone Project. We are partnered with Alcon, also known as True Vision. Our goal was to create something that </p>
+      could help surgeons, specifically eye surgeons do their job better </p>
+      We did this by taking a post operation approach to the problem and used
+      machine learing to solve the problem by providing surgeons with a post
+      opertion highlight of the significant parts of the surgery. </p>
       <p>To get started, click on home and upload a .mp4 file with surgery tools.</p>
     </div>
-        <!-- We will put our React component inside this div. -->
-        <div id="like_button_container"></div>
 
-        <!-- Load React. -->
-        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-
-        <!-- Load our React component. -->
-        <script src="App.js"></script>
 
 
     </body>
