@@ -11,6 +11,7 @@ const FileUpload = () => {
   const [message, setMessage] = useState('');
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [redirect,setredirect] = useState(false);
+  const [A, setA] = useState(false);
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -44,7 +45,8 @@ const FileUpload = () => {
       setUploadedFile({ fileName, filePath });
 
       setMessage('File Uploaded');
-      setredirect(true);
+      setA(true);
+      console.log(setA)
 
     } catch (err) {
       if (err.response.status === 500) {
@@ -58,8 +60,7 @@ const FileUpload = () => {
   return (
     <Fragment>
       {message ? <Message msg={message} /> : null}
-      {redirect ? (<Redirect to='/Watch' />):null}
-      <form onSubmit={onSubmit}>
+       <form onSubmit={onSubmit}>
         <div className='custom-file mb-4'>
           <input
             type='file'
@@ -80,14 +81,13 @@ const FileUpload = () => {
           className='btn btn-primary btn-block mt-4'
         />
       </form>
-       {uploadedFile ? (
-        <div className='row mt-5'>
-          <div className='col-md-6 m-auto'>
-            <h3 className='text-center'>{uploadedFile.fileName}</h3>
-            <img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />
-          </div>
+       {A ? (
+         <div>
+           <video width="800" height="550" style={{display:"block",margin:"0 auto"}} controls >
+             <source src="https://firebasestorage.googleapis.com/v0/b/meprojec.appspot.com/o/demo_test.mp4?alt=media&token=8d9157df-dda6-4f56-826f-8182cd0d2187" type="video/mp4"/>
+           </video>
         </div>
-      ) : null}
+      ) :null}
     </Fragment>
   );
 };
